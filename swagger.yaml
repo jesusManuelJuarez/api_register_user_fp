@@ -1,0 +1,182 @@
+openapi: 3.0.0
+info:
+  title: API de REGISTRO DE USUARIOS Y LOGIN
+  version: 1.0.0
+  description: Documentación de la API USUARIOS Y LOGIN
+servers:
+  - url: http://localhost:3000
+paths:
+  /user:
+    get:
+      summary: Obtiene todos los usuarios
+      description: Obtiene una lista de todos los usuarios registrados.
+      responses:
+        '200':
+          description: Lista de usuarios
+    post:
+      summary: Crea un nuevo usuario
+      description: Crea un nuevo usuario con los datos proporcionados.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Usuario creado exitosamente
+        '400':
+          description: Error en la creación del usuario
+  /user/{id}:
+    get:
+      summary: Obtiene un usuario por ID
+      description: Obtiene un usuario específico según su ID.
+      parameters:
+        - in: path
+          name: id
+          description: ID del usuario a obtener
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Usuario encontrado
+        '404':
+          description: Usuario no encontrado
+    put:
+      summary: Actualiza un usuario por ID
+      description: Actualiza un usuario específico según su ID.
+      parameters:
+        - in: path
+          name: id
+          description: ID del usuario a actualizar
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Usuario actualizado exitosamente
+        '400':
+          description: Error en la actualización del usuario
+        '404':
+          description: Usuario no encontrado
+    delete:
+      summary: Elimina un usuario por ID
+      description: Elimina un usuario específico según su ID.
+      parameters:
+        - in: path
+          name: id
+          description: ID del usuario a eliminar
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Usuario eliminado exitosamente
+        '404':
+          description: Usuario no encontrado
+  /login:
+    get:
+      summary: Obtiene todos los logins
+      description: Obtiene una lista de todos los logins registrados.
+      responses:
+        '200':
+          description: Lista de logins
+    post:
+      summary: Crea un nuevo login
+      description: Crea un nuevo login con los datos proporcionados.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+      responses:
+        '201':
+          description: Login creado exitosamente
+        '400':
+          description: Error en la creación del login
+  /login/{id}:
+    get:
+      summary: Obtiene un login por ID
+      description: Obtiene un login específico según su ID.
+      parameters:
+        - in: path
+          name: id
+          description: ID del login a obtener
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Login encontrado
+        '404':
+          description: Login no encontrado
+    put:
+      summary: Actualiza un login por ID
+      description: Actualiza un login específico según su ID.
+      parameters:
+        - in: path
+          name: id
+          description: ID del login a actualizar
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+      responses:
+        '200':
+          description: Login actualizado exitosamente
+        '400':
+          description: Error en la actualización del login
+        '404':
+          description: Login no encontrado
+    delete:
+      summary: Elimina un login por ID
+      description: Elimina un login específico según su ID.
+      parameters:
+        - in: path
+          name: id
+          description: ID del login a eliminar
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Login eliminado exitosamente
+        '404':
+          description: Login no encontrado
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        idUser:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        idPlanFP:
+          type: integer
+    Login:
+      type: object
+      properties:
+        idLogin:
+          type: integer
+        email:
+          type: string
+        password:
+          type: string
