@@ -16,7 +16,6 @@ export class GetByIdLoginController {
           info: {
               idLogin: login.idLogin,
               email: login.email,
-              password: login.password
           },
         });
       else
