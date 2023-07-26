@@ -27,7 +27,6 @@ class GetAllLoginController {
                             return {
                                 idLogin: login.idLogin,
                                 email: login.email,
-                                password: login.password
                             };
                         }),
                     });

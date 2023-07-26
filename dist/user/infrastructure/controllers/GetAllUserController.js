@@ -28,7 +28,6 @@ class GetAllUserController {
                                 idUser: user.idUser,
                                 name: user.name,
                                 email: user.email,
-                                password: user.password,
                                 idPlanFP: user.idPlanFP
                             };
                         }),
